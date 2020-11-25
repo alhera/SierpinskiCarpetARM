@@ -9,7 +9,7 @@
 	.eabi_attribute 30, 6
 	.eabi_attribute 34, 1
 	.eabi_attribute 18, 4
-	.file	"sierpinskiCarpet.c"
+	.file	"test.c"
 	.text
 	.global	__aeabi_idiv
 	.align	2
@@ -20,11 +20,11 @@
 	.fpu vfp
 	.type	main, %function
 main:
-	@ args = 0, pretend = 0, frame = 32
+	@ args = 0, pretend = 0, frame = 40
 	@ frame_needed = 1, uses_anonymous_args = 0
 	push	{fp, lr}
 	add	fp, sp, #4
-	sub	sp, sp, #32
+	sub	sp, sp, #40
 	mov	r3, #108
 	str	r3, [fp, #-28]
 	mov	r3, #4
@@ -56,18 +56,16 @@ main:
 	mul	r3, r3, r2
 	mov	r2, r3
 	lsl	r3, r3, #2
-	sub	r2, r2, r3
-	ldr	r3, [fp, #-16]
+	sub	r3, r2, r3
+	ldr	r2, [fp, #-16]
 	add	r3, r2, r3
-	ldr	r2, [fp, #-12]
-	cmp	r2, r3
-	bge	.L5
+	str	r3, [fp, #-36]
 	ldr	r2, [fp, #-12]
 	mov	r3, r2
 	lsl	r3, r3, #1
 	add	r3, r3, r2
 	mov	r1, r3
-	ldr	r0, [fp, #-16]
+	ldr	r0, [fp, #-20]
 	bl	__aeabi_idiv
 	mov	r3, r0
 	mov	r2, r3
@@ -75,50 +73,26 @@ main:
 	mul	r3, r3, r2
 	mov	r2, r3
 	lsl	r3, r3, #2
-	sub	r2, r2, r3
-	ldr	r3, [fp, #-16]
-	add	r2, r2, r3
+	sub	r3, r2, r3
+	ldr	r2, [fp, #-20]
+	add	r3, r2, r3
+	str	r3, [fp, #-40]
+	ldr	r2, [fp, #-36]
+	ldr	r3, [fp, #-12]
+	cmp	r2, r3
+	ble	.L5
 	ldr	r3, [fp, #-12]
 	lsl	r3, r3, #1
+	ldr	r2, [fp, #-36]
 	cmp	r2, r3
 	bgt	.L5
-	ldr	r2, [fp, #-12]
-	mov	r3, r2
-	lsl	r3, r3, #1
-	add	r3, r3, r2
-	mov	r1, r3
-	ldr	r0, [fp, #-20]
-	bl	__aeabi_idiv
-	mov	r3, r0
-	mov	r2, r3
+	ldr	r2, [fp, #-40]
 	ldr	r3, [fp, #-12]
-	mul	r3, r3, r2
-	mov	r2, r3
-	lsl	r3, r3, #2
-	sub	r2, r2, r3
-	ldr	r3, [fp, #-20]
-	add	r3, r2, r3
-	ldr	r2, [fp, #-12]
 	cmp	r2, r3
-	bge	.L5
-	ldr	r2, [fp, #-12]
-	mov	r3, r2
-	lsl	r3, r3, #1
-	add	r3, r3, r2
-	mov	r1, r3
-	ldr	r0, [fp, #-20]
-	bl	__aeabi_idiv
-	mov	r3, r0
-	mov	r2, r3
-	ldr	r3, [fp, #-12]
-	mul	r3, r3, r2
-	mov	r2, r3
-	lsl	r3, r3, #2
-	sub	r2, r2, r3
-	ldr	r3, [fp, #-20]
-	add	r2, r2, r3
+	ble	.L5
 	ldr	r3, [fp, #-12]
 	lsl	r3, r3, #1
+	ldr	r2, [fp, #-40]
 	cmp	r2, r3
 	bgt	.L5
 	mov	r3, #32
