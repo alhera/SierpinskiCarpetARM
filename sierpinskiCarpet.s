@@ -100,7 +100,7 @@ main:
 	ldr	r3, [fp, #-24]		
 	add	r3, r3, #1			@ aumenta el valor de z
 	str	r3, [fp, #-24]		@ almacena el valor aumentado de x 
-.L4:						@ ciclo para recorrer los niveles "z" de la alfombra 
+.L4:	@ ciclo para recorrer los niveles "z" de la alfombra 
 	ldr	r2, [fp, #-24]		@ r2 = "z"
 	ldr	r3, [fp, #-32]		@ carga el nivel (4)
 	cmp	r2, r3				@ compara "z" con el nivel ( z+1 <= 4? )...
